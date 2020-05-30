@@ -17,18 +17,18 @@ export class AHUCalc extends React.Component {
   }
 
   calculateDosage() {
-    let totalAverageIntensity = ((this.state.totalWattage * 0.3) * (Math.log(this.state.distance / 2) + 0.577) * (10 ** 6)) / (2 * Math.PI * this.state.coilLength * (this.state.distance / 2));
-    let contactTime = (((this.state.distance / 30.48) * 1.5 * (this.state.coilHeight / 30.48) * (this.state.coilLength / 30.48)) / (this.state.flowRate)) * 60;
-    let correctedDosage = totalAverageIntensity * contactTime * 0.7;
+    const totalAverageIntensity = ((this.state.totalWattage * 0.3) * (Math.log(this.state.distance / 2) + 0.577) * (10 ** 6)) / (2 * Math.PI * this.state.coilLength * (this.state.distance / 2));
+    const contactTime = (((this.state.distance / 30.48) * 1.5 * (this.state.coilHeight / 30.48) * (this.state.coilLength / 30.48)) / (this.state.flowRate)) * 60;
+    const correctedDosage = totalAverageIntensity * contactTime * 0.7;
     this.setState({correctedDosage});
   }
 
   calculateIntensity() {
-    let diagonalDistance = Math.sqrt((this.state.coilHeight / (this.state.numRows * 2)) ** 2 + this.state.distance ** 2);
-    let minIntensity = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * diagonalDistance)) * 0.63; 
-    let maxIntensity = minIntensity * 1.5;
-    let maxIntensityAlt = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * this.state.distance)) * 0.63; 
-    let avgIntensity = ((minIntensity * 2) + (this.state.numRows * maxIntensityAlt) + (this.state.numRows - 1) * (minIntensity * 2)) / (this.state.numRows * 2 + 1);
+    const diagonalDistance = Math.sqrt((this.state.coilHeight / (this.state.numRows * 2)) ** 2 + this.state.distance ** 2);
+    const minIntensity = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * diagonalDistance)) * 0.63; 
+    const maxIntensity = minIntensity * 1.5;
+    const maxIntensityAlt = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * this.state.distance)) * 0.63; 
+    const avgIntensity = ((minIntensity * 2) + (this.state.numRows * maxIntensityAlt) + (this.state.numRows - 1) * (minIntensity * 2)) / (this.state.numRows * 2 + 1);
     this.setState({minIntensity});
     this.setState({maxIntensity});
     this.setState({avgIntensity});
