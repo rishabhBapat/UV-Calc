@@ -1,0 +1,85 @@
+label, input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+label {
+    margin-bottom: 20px;
+    ;
+}
+
+input {
+    width: 200px;
+    padding-left: 5px;
+    margin: 0px 8px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: #515c6e;
+    color: #e6e6e6;
+    outline: none;
+    font-family: 'calibri';
+    font-size: 20px;
+}
+
+button {
+    background-color: #515c6e;
+    color: #e6e6e6;
+    border: 1px solid #e6e6e6;
+    margin: 10px 10px;
+    border-radius: 4px;
+    font-size: 24px;
+    font-family: 'calibri';
+    transition-duration: 0.3s;
+    outline: none;
+}
+
+button:hover {
+    color: #b3ffb3;
+    border-color: #b3ffb3;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #e6e6e6;
+    font-family: calibri;
+    font-size: 24px
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #e6e6e6;
+    font-family: calibri;
+    font-size: 24px
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #e6e6e6;
+    font-family: calibri;
+    font-size: 24px
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #e6e6e6;
+    font-family: calibri;
+    font-size: 24px       
+  }
+
+/* removes the arrow tools in the number fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { /* Chrome, Safari, Edge, Opera */
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] { /* Firefox */
+    -moz-appearance: textfield;
+}
+
+/* smoothly removes placeholders when the field is focused */
+::-webkit-input-placeholder { opacity: 1; -webkit-transition: opacity .3s; transition: opacity .3s; }  /* Chrome <=56, Safari < 10 */
+:-moz-placeholder { opacity: 1; -moz-transition: opacity .3s; transition: opacity .3s; } /* FF 4-18 */
+::-moz-placeholder { opacity: 1; -moz-transition: opacity .3s; transition: opacity .3s; } /* FF 19-51 */
+:-ms-input-placeholder { opacity: 1; -ms-transition: opacity .3s; transition: opacity .3s; } /* IE 10+ */
+::placeholder { opacity: 1; transition: opacity .3s; } /* Modern Browsers */
+
+*:focus::-webkit-input-placeholder { opacity: 0; } /* Chrome <=56, Safari < 10 */
+*:focus:-moz-placeholder { opacity: 0; } /* FF 4-18 */
+*:focus::-moz-placeholder { opacity: 0; } /* FF 19-50 */
+*:focus:-ms-input-placeholder { opacity: 0; } /* IE 10+ */
+*:focus::placeholder { opacity: 0; } /* Modern Browsers */
