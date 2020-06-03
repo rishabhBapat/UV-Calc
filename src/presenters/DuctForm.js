@@ -8,7 +8,7 @@ export const formStyle = {
 };
 
 export const centerDiv = {
-  width: '40%',
+  width: '25%',
   margin: '50px auto',
   textAlign: 'center'
 };

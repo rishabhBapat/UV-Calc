@@ -18,7 +18,7 @@ export const DisplayResult = (props) => {
   } else {
     return (
       <div style={centerDiv}>
-      <span style={resultStyle}>Your {props.resultName} is <span style={{color: '#b3ffb3'}}>{props.resultValue}</span>.</span>
+      <span style={resultStyle}>Your {props.resultName} is <span style={{color: '#b3ffb3'}}>{Math.floor(props.resultValue)}</span>.</span>
       </div>
     )
   }
