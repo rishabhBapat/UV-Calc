@@ -25,13 +25,20 @@ export class AHUCalc extends React.Component {
 
   calculateIntensity() {
     const diagonalDistance = Math.sqrt((this.state.coilHeight / (this.state.numRows * 2)) ** 2 + this.state.distance ** 2);
-    const minIntensity = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * diagonalDistance)) * 0.63; 
-    const maxIntensity = minIntensity * 1.5;
-    const maxIntensityAlt = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * this.state.distance)) * 0.63; 
-    const avgIntensity = ((minIntensity * 2) + (this.state.numRows * maxIntensityAlt) + (this.state.numRows - 1) * (minIntensity * 2)) / (this.state.numRows * 2 + 1);
-    this.setState({minIntensity});
-    this.setState({maxIntensity});
-    this.setState({avgIntensity});
+    const minIntensity = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * diagonalDistance));
+    let maxIntensity = ((this.state.rowWattage * 0.3 * 10 ** 6) / (2 * Math.PI * this.state.lampLength * this.state.distance));
+    if (this.state.numRows >= 3) {
+      maxIntensity += minIntensity * 2;
+    } else if (this.state.numRows == 2) {
+      maxIntensity += minIntensity;
+    } 
+    const avgIntensity = ((minIntensity * 2) + (this.state.numRows * maxIntensity) + (this.state.numRows - 1) * (minIntensity * 2)) / (this.state.numRows * 2 + 1);
+  
+    this.setState({
+      minIntensity,
+      maxIntensity,
+      avgIntensity
+    })
   }
 
   handleClick() {
