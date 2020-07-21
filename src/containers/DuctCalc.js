@@ -19,9 +19,9 @@ export class DuctCalc extends React.Component {
   calculateDosage() {
     const ductWidthAlt = this.state.ductWidth / (this.state.numCols * 2);
     const ductHeightAlt = this.state.ductHeight / (this.state.numRows * 2);
-    const avgIntensityDistance = Math.max(ductHeightAlt, ductWidthAlt); 
+    const avgIntensityDistance = Math.max(ductHeightAlt, ductWidthAlt) / 1.5; 
     const totalAverageIntensity = ((this.state.totalWattage * 0.3) * (Math.log(avgIntensityDistance) + 0.577) * (10 ** 6)) / (2 * Math.PI * this.state.lampLength * (avgIntensityDistance));
-    const contactTime = (((this.state.lampLength / 30.48) * (this.state.ductHeight / 30.48) * (this.state.ductWidth / 30.48)) / (this.state.flowRate)) * 60;
+    const contactTime = ((((this.state.lampLength / 30.48) + 1) * (this.state.ductHeight / 30.48) * (this.state.ductWidth / 30.48)) / (this.state.flowRate)) * 60;
     const correctedDosage = totalAverageIntensity * contactTime * 0.7;
     this.setState({correctedDosage});
   }
